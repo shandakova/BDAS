@@ -40,13 +40,6 @@ public class Obfuscator {
         for (int i = 0; i < children.getLength(); i++) {
             final Node n = children.item(i);
             if (n.getNodeType() == Node.ELEMENT_NODE) {
-                NamedNodeMap attributes = n.getAttributes();
-                for (int r = 0; r < attributes.getLength(); r++) {
-                    Node item = attributes.item(r);
-                    item.setNodeValue(
-                            type ? obfuscate(item.getNodeValue()) : unobfuscate(item.getNodeValue())
-                    );
-                }
                 parse((Element) n, type);
             } else {
                 if (n.getNodeValue().trim().length() != 0) {
